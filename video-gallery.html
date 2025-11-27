@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Gallery | LifeLine Hospital</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+
+    <style>
+        body {
+            background: #f4f9ff;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 40px 0;
+            background: linear-gradient(135deg, #0066ff, #00bbff);
+            color: white;
+            text-align: center;
+            animation: fadeDown 1s ease;
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Video Card Hover Animation */
+        .video-card:hover {
+            transform: scale(1.05);
+            transition: 0.4s;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-frame {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* Search Bar */
+        #searchBar {
+            max-width: 450px;
+            margin: 20px auto;
+            animation: fadeUp 1s ease;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-primary-subtle fs-4 Semibold sticky-top w-100 ">
+        <div class="container-fluid navbar-font">
+            <a class="navbar-brand" href="#"><img src="./images/lifelinelogo.png" alt="" height="90px"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon Regular"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2  mb-lg-0 gap-0 gap-md-5 navigation-ul align-items-md-center ">
+                    <li class="nav-item">
+
+                        <a class="nav-link active fw-bold" aria-current="page" href="./index.html"><i
+                                class="fa-solid fa-house-chimney"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  fw-bold" href="./About.html">
+                            <i class="fa-regular fa-address-card"></i> About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="./find-doctor.html">
+                            <i class="fa-solid fa-user-doctor"></i> Find a Doctor</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="./serves.html">
+                            <i class="fa-brands fa-servicestack"></i> Our Services</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="./contectus.html">
+                            <i class="fa-solid fa-phone-volume"></i> Contact US</a>
+                    </li>
+
+
+                    <!-- Example single danger button -->
+                    <div class="dropdown">
+                        <button type="button"
+                            class="btn  dropdown-toggle bg-info-subtle text-secondary me-2 align-items-center"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Others
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./about-human-body.html">About human Body</a></li>
+                            <li><a class="dropdown-item" href="./register.html">Login</a></li>
+                            <li><a class="dropdown-item" href="./photo-galary.html">photo Gallery</a></li>
+                            <li><a class="dropdown-item" href="./video-gallery.html">Video Gallery</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="./booke-appointment.html">Book-appointment</a>
+                            </li>
+                        </ul>
+                    </div>
+                </ul>
+
+                <form class="d-flex " role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                    <button class="btn btn-outline-success" type="submit">
+                        Search
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="fw-bold">Hospital Video Gallery</h1>
+        <p class="lead">Watch informative videos about our services, departments, and healthcare procedures.</p>
+    </div>
+
+
+    <!-- Video Gallery Container -->
+    <div class="container py-5">
+        <div class="row g-4" id="videoGallery">
+
+            <!-- Video 1 -->
+            <div class="col-md-4 video-item" data-title="Heart Surgery Procedure">
+                <div class="card video-card p-2">
+                    <div class="video-frame">
+                        <iframe src="https://assets.pinterest.com/ext/embed.html?id=125115695894884002" height="400"
+                            width="345" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Heart Surgery Procedure</h5>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="col-md-4 video-item" data-title="MRI Scan Process">
+                <div class="card video-card p-2">
+                    <div class="video-frame">
+                        <iframe src="https://assets.pinterest.com/ext/embed.html?id=2533343536826891" height="400"
+                            width="345" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">MRI Scan Process</h5>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="col-md-4 video-item" data-title="Emergency Department Tour">
+                <div class="card video-card p-2">
+                    <div class="video-frame">
+                        <iframe src="https://assets.pinterest.com/ext/embed.html?id=4081455906729999" height="400"
+                            width="345" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Emergency Department Tour</h5>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Video Gallery Container -->
+    <div class="container py-5">
+        <div class="row g-4" id="videoGallery">
+
+            <!-- Video 4 -->
+            <div class="col-md-4 video-item" data-title="Heart Surgery Procedure">
+                <div class="card video-card p-2">
+                    <div class="video-frame">
+                        <iframe src="https://assets.pinterest.com/ext/embed.html?id=5840674510583622" height="400"
+                            width="345" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Neuron Synapses In Our Brain.🧠</h5>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 5 -->
+            <div class="col-md-4 video-item" data-title="MRI Scan Process">
+                <div class="card video-card p-2">
+                    <div class="video-frame">
+                        <iframe src="https://assets.pinterest.com/ext/embed.html?id=617978380161477045" height="400"
+                            width="345" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Struggling with neurological issues like migraines</h5>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 6 -->
+            <div class="col-md-4 video-item" data-title="Emergency Department Tour">
+                <div class="card video-card p-2">
+                    <div class="video-frame">
+                        <iframe src="https://assets.pinterest.com/ext/embed.html?id=4081455906729999" height="400"
+                            width="345" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Struggling with neurological issues like migraines, insomnia,
+                        </h5>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Video Gallery Container -->
+    <div class="container py-5">
+        <div class="row g-4" id="videoGallery">
+
+            <!-- Video 7 -->
+            <div class="col-md-4 video-item" data-title="Heart Surgery Procedure">
+                <div class="card video-card p-2">
+                    <div class="video-frame">
+                        <iframe src="https://assets.pinterest.com/ext/embed.html?id=7599893116348132" height="400"
+                            width="345" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Witness the Intricate Dance of a Neuron</h5>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 8 -->
+            <div class="col-md-4 video-item" data-title="MRI Scan Process">
+                <div class="card video-card p-2">
+                    <div class="video-frame">
+                        <iframe src="https://assets.pinterest.com/ext/embed.html?id=11610911541536800" height="400"
+                            width="345" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">MRI Scan Process</h5>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 9 -->
+            <div class="col-md-4 video-item" data-title="Emergency Department Tour">
+                <div class="card video-card p-2">
+                    <div class="video-frame">
+                        <iframe src="https://assets.pinterest.com/ext/embed.html?id=48061921671683629" height="400"
+                            width="345" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Emergency Department Tour</h5>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function searchVideos() {
+            let input = document.getElementById("videoSearch").value.toLowerCase();
+            let videos = document.getElementsByClassName("video-item");
+
+            for (let i = 0; i < videos.length; i++) {
+                let title = videos[i].getAttribute("data-title").toLowerCase();
+                videos[i].style.display = title.includes(input) ? "block" : "none";
+            }
+        }
+    </script>
+
+    <div class="progress rounded-0" role="progressbar" aria-label="Animated striped example" aria-valuenow="75"
+        aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>
+    </div>
+    <footer class="d-flex gap-5 navagation">
+        <div class="container py-3">
+            <!-- Option A: row/cols ব্যবহার করে (responsive & semantic) -->
+            <div class="row align-items-center g-2">
+                <div class="text-center">
+                    <img src="./images/lifeline futer.png" alt="LifeLine Hospital logo" width="500" height="400"
+                        class="img-fluid  ">
+                </div>
+            </div>
+            <p class="text-center mt-3">© 2025 Emon Golder joy | All rights reserved</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

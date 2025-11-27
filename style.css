@@ -1,0 +1,46 @@
+.font img{
+    height: 250px;
+    width: 200px;
+    display: flex;
+}
+.font h2{
+    display: flex;
+}
+.card img{
+    height: 250px;
+    width: 200px;
+    display: flex;
+
+}
+.navigation-ul li:hover a{
+    color: rgb(0, 183, 255)!important;
+}
+.navigation-ul .nav-link{
+font-size: 15px;
+text-wrap: nowrap;
+}
+.footer div{
+    border-color: aquamarine;
+}
+.navagation {
+    background-color:rgb(106, 177, 207);
+}
+.futer{
+    display: flex;
+    color: aliceblue;
+    
+}
+.futer ul li{
+    text-decoration: none;
+}
+
+
+
+@media screen and (max-width:576px) {
+  body{
+   
+  }
+ .navigation-ul .nav-link{
+    font-size: 18px;
+ }
+}

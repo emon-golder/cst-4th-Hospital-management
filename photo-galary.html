@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hospital Photo Gallery | Apex Hospital</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+
+    <style>
+        :root {
+            --accent: #0d6efd;
+            --muted: #6c757d;
+        }
+
+        body {
+            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', Arial;
+            color: #222;
+            padding-top: 0 !important;
+            /* FIX navbar gap */
+            /* padding-bottom: 40px; */
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-header h1 {
+            font-weight: 700;
+            letter-spacing: 0.2px;
+        }
+
+        .card-img-wrap {
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(13, 110, 253, 0.06);
+        }
+
+        .card-img-wrap img {
+            width: 100%;
+            height: 230px;
+            /* এখানে height বাড়ানো হয়েছে */
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .card-img-wrap:hover img {
+            transform: scale(1.08) rotate(-0.5deg);
+            filter: brightness(.95) contrast(1.02);
+        }
+
+        .overlay-caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.5));
+            color: #fff;
+            padding: 12px;
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+            gap: .5rem;
+            align-items: center;
+        }
+
+        .badge-dept {
+            background: rgba(255, 255, 255, .15);
+            border-radius: 8px;
+            padding: .25rem .5rem;
+            font-size: .8rem;
+        }
+
+        .gallery-item {
+            opacity: 0;
+            transform: translateY(18px) scale(.995);
+            animation: fadeUp .6s forwards ease-out;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-img {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: var(--muted);
+            padding: 40px 0;
+        }
+
+        @media (max-width:576px) {
+            .card-img-wrap img {
+                height: 160px;
+                /* Mobile size */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-primary-subtle fs-4 Semibold sticky-top w-100">
+        <div class="container-fluid navbar-font">
+            <a class="navbar-brand" href="#"><img src="./images/lifelinelogo.png" alt="" height="90px"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon Regular"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-md-5 navigation-ul align-items-md-center">
+                    <li class="nav-item"><a class="nav-link fw-bold" href="./index.html"><i
+                                class="fa-solid fa-house-chimney"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="./About.html"><i
+                                class="fa-regular fa-address-card"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="./find-doctor.html"><i
+                                class="fa-solid fa-user-doctor"></i> Find a Doctor</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="./serves.html"><i
+                                class="fa-brands fa-servicestack"></i> Our Services</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="./contectus.html"><i
+                                class="fa-solid fa-phone-volume"></i> Contact Us</a></li>
+
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle bg-info-subtle text-secondary me-2"
+                            data-bs-toggle="dropdown">
+                            Others
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./about-human-body.html">About Human Body</a></li>
+                            <li><a class="dropdown-item" href="./register.html">Login</a></li>
+                            <li><a class="dropdown-item" href="./photo-galary.html">Photo Gallery</a></li>
+                            <li><a class="dropdown-item" href="./video-gallery.html">Video Gallery</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="./booke-appointment.html">Book Appointment</a></li>
+                        </ul>
+                    </div>
+                </ul>
+
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Gallery -->
+    <div class="container">
+        <section class="gallery-header">
+            <h1>LifeLine Hospital — Photo Gallery</h1>
+            <p class="text-muted">Departme</p>
+
+
+
+            <div class="d-flex flex-wrap gap-4 justify-content-center">
+
+                <div class="col-12 col-sm-6 col-md-3 gallery-item" data-dept="wards" style="animation-delay:.10s">
+                    <div class="card border-0">
+                        <div class="card-img-wrap">
+                            <img src="./hospital photo/photo1.jpg" alt="General Ward" loading="lazy">
+                            <div class="overlay-caption">
+                                <div>General Ward</div>
+                                <div class="badge-dept">Wards</div>
+                            </div>
+                        </div>
+                        <div class="mt-2 small text-muted">Comfortable, hygienic patient rooms.</div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 gallery-item" data-dept="wards" style="animation-delay:.10s">
+                    <div class="card border-0">
+                        <div class="card-img-wrap">
+                            <img src="./hospital photo/photo2.jpg" alt="General Ward" loading="lazy">
+                            <div class="overlay-caption">
+                                <div>General Ward</div>
+                                <div class="badge-dept">Wards</div>
+                            </div>
+                        </div>
+                        <div class="mt-2 small text-muted">Comfortable, hygienic patient rooms.</div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 gallery-item" data-dept="wards" style="animation-delay:.10s">
+                    <div class="card border-0">
+                        <div class="card-img-wrap">
+                            <img src="./hospital photo/photo3.jpg" alt="General Ward" loading="lazy">
+                            <div class="overlay-caption">
+                                <div>General Ward</div>
+                                <div class="badge-dept">Wards</div>
+                            </div>
+                        </div>
+                        <div class="mt-2 small text-muted">Comfortable, hygienic patient rooms.</div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 gallery-item" data-dept="wards" style="animation-delay:.10s">
+                    <div class="card border-0">
+                        <div class="card-img-wrap">
+                            <img src="./hospital photo/photo4.jpg" alt="General Ward" loading="lazy">
+                            <div class="overlay-caption">
+                                <div>General Ward</div>
+                                <div class="badge-dept">Wards</div>
+                            </div>
+                        </div>
+                        <div class="mt-2 small text-muted">Comfortable, hygienic patient rooms.</div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 gallery-item" data-dept="wards" style="animation-delay:.10s">
+                    <div class="card border-0">
+                        <div class="card-img-wrap">
+                            <img src="./hospital photo/photo5.jpg" alt="General Ward" loading="lazy">
+                            <div class="overlay-caption">
+                                <div>General Ward</div>
+                                <div class="badge-dept">Wards</div>
+                            </div>
+                        </div>
+                        <div class="mt-2 small text-muted">Comfortable, hygienic patient rooms.</div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 gallery-item" data-dept="wards" style="animation-delay:.10s">
+                    <div class="card border-0">
+                        <div class="card-img-wrap">
+                            <img src="./hospital photo/photo6.jpg" alt="General Ward" loading="lazy">
+                            <div class="overlay-caption">
+                                <div>General Ward</div>
+                                <div class="badge-dept">Wards</div>
+                            </div>
+                        </div>
+                        <div class="mt-2 small text-muted">Comfortable, hygienic patient rooms.</div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 gallery-item" data-dept="wards" style="animation-delay:.10s">
+                    <div class="card border-0">
+                        <div class="card-img-wrap">
+                            <img src="./hospital photo/photo7.jpg" alt="General Ward" loading="lazy">
+                            <div class="overlay-caption">
+                                <div>General Ward</div>
+                                <div class="badge-dept">Wards</div>
+                            </div>
+                        </div>
+                        <div class="mt-2 small text-muted">Comfortable, hygienic patient rooms.</div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 gallery-item" data-dept="wards" style="animation-delay:.10s">
+                    <div class="card border-0">
+                        <div class="card-img-wrap">
+                            <img src="./hospital photo/photo8.jpg" alt="General Ward" loading="lazy">
+                            <div class="overlay-caption">
+                                <div>General Ward</div>
+                                <div class="badge-dept">Wards</div>
+                            </div>
+                        </div>
+                        <div class="mt-2 small text-muted">Comfortable, hygienic patient rooms.</div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 gallery-item" data-dept="wards" style="animation-delay:.10s">
+                    <div class="card border-0">
+                        <div class="card-img-wrap">
+                            <img src="./hospital photo/photo9.jpg" alt="General Ward" loading="lazy">
+                            <div class="overlay-caption">
+                                <div>General Ward</div>
+                                <div class="badge-dept">Wards</div>
+                            </div>
+                        </div>
+                        <div class="mt-2 small text-muted">Comfortable, hygienic patient rooms.</div>
+                    </div>
+                </div>
+
+                <!-- একইভাবে বাকি item গুলো থাকবে -->
+
+            </div>
+        </section>
+    </div>
+
+    <!-- footer -->
+    <div class="progress rounded-0" role="progressbar" aria-label="Animated striped example" aria-valuenow="75"
+        aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>
+    </div>
+
+    <footer class="d-flex gap-5 navagation">
+        <div class="container py-3">
+            <!-- Option A: row/cols ব্যবহার করে (responsive & semantic) -->
+            <div class="row align-items-center g-2">
+                <div class="text-center">
+                    <img src="./images/lifeline futer.png" alt="LifeLine Hospital logo" width="500" height="400"
+                        class="img-fluid  ">
+                </div>
+            </div>
+            <p class="text-center mt-3">© 2025 Emon Golder joy | All rights reserved</p>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
