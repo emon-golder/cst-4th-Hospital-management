@@ -1,123 +1,214 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Human Body Parts — LifeLine Hospital</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./scss/_variables.scss" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <link rel="stylesheet" href="./style.css">
-   
-   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <link rel="stylesheet" href="./style.css">
+
+
 
   <style>
-    :root{
-      --accent:#0d6efd;
-      --muted:#6c757d;
+    :root {
+      --accent: #0d6efd;
+      --muted: #6c757d;
       --card-bg: #ffffffcc;
-      --glass: rgba(255,255,255,0.6);
+      --glass: rgba(255, 255, 255, 0.6);
     }
-    body{background: linear-gradient(180deg,#e9f2ff 0%, #ffffff 60%);font-family: 'Segoe UI', Tahoma, sans-serif;color:#222}
-    header{padding:2rem 1rem; text-align:center}
-    header h1{font-size:2rem;margin-bottom:.25rem}
-    header p{color:var(--muted)}
 
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
-    .card-body-short{min-height:160px}
+    body {
+      background: linear-gradient(180deg, #e9f2ff 0%, #ffffff 60%);
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #222
+    }
 
-    .part-card{background:var(--card-bg);border-radius:14px;padding:1rem;box-shadow:0 8px 20px rgba(13,110,253,0.06);backdrop-filter: blur(6px);transition:transform .35s, box-shadow .35s}
-    .part-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 40px rgba(13,110,253,0.12)}
+    header {
+      padding: 2rem 1rem;
+      text-align: center
+    }
 
-    .icon-wrap{width:76px;height:76px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-right:12px;flex-shrink:0;background:linear-gradient(135deg, rgba(13,110,253,0.12), rgba(13,110,253,0.04));}
-    .part-title{font-weight:600;margin:0}
-    .muted{color:var(--muted)}
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: .25rem
+    }
+
+    header p {
+      color: var(--muted)
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem
+    }
+
+    .card-body-short {
+      min-height: 160px
+    }
+
+    .part-card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 1rem;
+      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.06);
+      backdrop-filter: blur(6px);
+      transition: transform .35s, box-shadow .35s
+    }
+
+    .part-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(13, 110, 253, 0.12)
+    }
+
+    .icon-wrap {
+      width: 76px;
+      height: 76px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(13, 110, 253, 0.12), rgba(13, 110, 253, 0.04));
+    }
+
+    .part-title {
+      font-weight: 600;
+      margin: 0
+    }
+
+    .muted {
+      color: var(--muted)
+    }
 
     /* simple pulse to highlight vital organs */
-    .pulse{position:relative}
-    .pulse::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 0 rgba(13,110,253,0.15);animation:pulse 2.6s infinite}
-    @keyframes pulse{0%{box-shadow:0 0 0 rgba(13,110,253,0.18)}50%{box-shadow:0 0 30px rgba(13,110,253,0.02)}100%{box-shadow:0 0 0 rgba(13,110,253,0)}}
+    .pulse {
+      position: relative
+    }
+
+    .pulse::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      box-shadow: 0 0 0 rgba(13, 110, 253, 0.15);
+      animation: pulse 2.6s infinite
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 rgba(13, 110, 253, 0.18)
+      }
+
+      50% {
+        box-shadow: 0 0 30px rgba(13, 110, 253, 0.02)
+      }
+
+      100% {
+        box-shadow: 0 0 0 rgba(13, 110, 253, 0)
+      }
+    }
 
     /* reveal on scroll */
-    .reveal{opacity:0;transform:translateY(18px);transition:all .6s cubic-bezier(.2,.9,.2,1)}
-    .reveal.visible{opacity:1;transform:none}
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: all .6s cubic-bezier(.2, .9, .2, 1)
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none
+    }
 
     /* detail panel */
-    .detail-panel{background:var(--glass);border-radius:12px;padding:1rem;margin-top:1rem}
+    .detail-panel {
+      background: var(--glass);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 1rem
+    }
 
     /* small responsive tweaks */
-    @media (max-width:576px){header h1{font-size:1.4rem}}
+    @media (max-width:576px) {
+      header h1 {
+        font-size: 1.4rem
+      }
+    }
   </style>
 </head>
+
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-primary-subtle fs-4 Semibold sticky-top w-100 ">
-        <div class="container-fluid navbar-font">
-            <a class="navbar-brand" href="#"><img src="./images/lifelinelogo.png" alt="" height="90px"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon Regular"></span>
+  <nav class="navbar navbar-expand-lg bg-primary-subtle fs-4 Semibold sticky-top w-100 ">
+    <div class="container-fluid navbar-font">
+      <a class="navbar-brand" href="#"><img src="./images/lifelinelogo.png" alt="" height="90px"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon Regular"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2  mb-lg-0 gap-0 gap-md-5 navigation-ul align-items-md-center ">
+          <li class="nav-item">
+
+            <a class="nav-link active fw-bold" aria-current="page" href="./index.html"><i
+                class="fa-solid fa-house-chimney"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  fw-bold" href="./About.html">
+              <i class="fa-regular fa-address-card"></i> About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link fw-bold" href="./find-doctor.html">
+              <i class="fa-solid fa-user-doctor"></i> Find a Doctor</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link fw-bold" href="./serves.html">
+              <i class="fa-brands fa-servicestack"></i> Our Services</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link fw-bold" href="./contectus.html">
+              <i class="fa-solid fa-phone-volume"></i> Contact US</a>
+          </li>
+
+
+          <!-- Example single danger button -->
+          <div class="dropdown">
+            <button type="button" class="btn  dropdown-toggle bg-info-subtle text-secondary me-2 align-items-center"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Others
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2  mb-lg-0 gap-0 gap-md-5 navigation-ul align-items-md-center ">
-                    <li class="nav-item">
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="./about-human-body.html">About human Body</a></li>
+              <li><a class="dropdown-item" href="./register.html">Login</a></li>
+              <li><a class="dropdown-item" href="./photo-galary.html">photo Gallery</a></li>
+              <li><a class="dropdown-item" href="./video-gallery.html">Video Gallery</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="./booke-appointment.html">Book-appointment</a>
+              </li>
+            </ul>
+          </div>
+        </ul>
 
-                        <a class="nav-link active fw-bold" aria-current="page" href="./index.html"><i
-                                class="fa-solid fa-house-chimney"></i> Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  fw-bold" href="./About.html">
-                            <i class="fa-regular fa-address-card"></i> About</a>
-                    </li>
+        <form class="d-flex " role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+          <button class="btn btn-outline-success" type="submit">
+            Search
+          </button>
+        </form>
 
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold" href="./find-doctor.html">
-                            <i class="fa-solid fa-user-doctor"></i> Find a Doctor</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold" href="./serves.html">
-                            <i class="fa-brands fa-servicestack"></i> Our Services</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold" href="./contectus.html">
-                            <i class="fa-solid fa-phone-volume"></i> Contact US</a>
-                    </li>
-
-
-                    <!-- Example single danger button -->
-                    <div class="dropdown">
-                        <button type="button"
-                            class="btn  dropdown-toggle bg-info-subtle text-secondary me-2 align-items-center"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Others
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="./about-human-body.html">About human Body</a></li>
-                            <li><a class="dropdown-item" href="./register.html">Login</a></li>
-                            <li><a class="dropdown-item" href="./photo-galary.html">photo Gallery</a></li>
-                            <li><a class="dropdown-item" href="./video-gallery.html">Video Gallery</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="./booke-appointment.html">Book-appointment</a>
-                            </li>
-                        </ul>
-                    </div>
-                </ul>
-
-                <form class="d-flex " role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">
-                        Search
-                    </button>
-                </form>
-
-            </div>
-        </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
 
 
 
@@ -127,7 +218,8 @@
 
   <header>
     <h1>Human Body Parts — LifeLine Hospital</h1>
-    <p>Clear, simple explanations for each body part, key facts and health tips. Click any part below to open a detailed panel.</p>
+    <p>Clear, simple explanations for each body part, key facts and health tips. Click any part below to open a detailed
+      panel.</p>
   </header>
 
   <main class="container mb-5">
@@ -136,20 +228,21 @@
       <div class="col-12">
         <div class="input-group shadow-sm p-2 rounded-3 bg-white">
           <span class="input-group-text bg-white border-0">🔎</span>
-          <input id="search" class="form-control border-0" placeholder="Search a body part — e.g. brain, heart, kidney...">
+          <input id="search" class="form-control border-0"
+            placeholder="Search a body part — e.g. brain, heart, kidney...">
         </div>
       </div>
     </div>
 
-    
-<div class="d-flex justify-content-center" style="gap: 20px;">
-  <div class="text-center">
-    <img src="./images/human-bode-parts.jpg" alt="" style="height:900px; width:auto;">    
-  </div>
-  <div class="text-center">
-    <img src="./images/human-bodu2.jpg" alt="" style="height:900px; width:auto;">
-  </div>
-</div>
+
+    <div class="d-md-flex justify-content-center" style="gap: 20px;">
+      <div class="text-center mb-5">
+        <img src="./images/human-bode-parts.jpg" alt="" style="height:900px; width:100%;">
+      </div>
+      <div class="text-center mb-5">
+        <img src="./images/human-bodu2.jpg" alt="" style="height:900px; width:100%;">
+      </div>
+    </div>
 
 
     <!-- grid of parts -->
@@ -159,12 +252,18 @@
       <article class="part-card reveal" data-part="brain" tabindex="0">
         <div class="d-flex align-items-start">
           <div class="icon-wrap pulse" aria-hidden="true">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3c-3 0-5 2-5 5 0 .6.1 1.2.3 1.7C5.8 10.4 5 11.6 5 13c0 2.8 2.2 5 5 5h4c2.8 0 5-2.2 5-5 0-1.4-.8-2.6-2.3-3.3.2-.5.3-1.1.3-1.7 0-3-2-5-5-5z" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 3c-3 0-5 2-5 5 0 .6.1 1.2.3 1.7C5.8 10.4 5 11.6 5 13c0 2.8 2.2 5 5 5h4c2.8 0 5-2.2 5-5 0-1.4-.8-2.6-2.3-3.3.2-.5.3-1.1.3-1.7 0-3-2-5-5-5z"
+                stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
           </div>
           <div>
             <h3 class="part-title">Brain</h3>
             <p class="muted mb-1">The body's control center — thought, memory, and motor control.</p>
-            <div class="card-body-short muted">The brain has major regions such as the cortex, cerebellum and brainstem. Traumatic injury, stroke, or uncontrolled blood pressure can cause serious damage. Seek emergency care for sudden weakness, facial droop, or speech difficulty.</div>
+            <div class="card-body-short muted">The brain has major regions such as the cortex, cerebellum and brainstem.
+              Traumatic injury, stroke, or uncontrolled blood pressure can cause serious damage. Seek emergency care for
+              sudden weakness, facial droop, or speech difficulty.</div>
           </div>
         </div>
       </article>
@@ -173,12 +272,18 @@
       <article class="part-card reveal" data-part="heart" tabindex="0">
         <div class="d-flex align-items-start">
           <div class="icon-wrap pulse" aria-hidden="true">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.35-9-7.25C-1 5.5 6 2 9.5 5.5 11 7 12 8 12 8s1-1 2.5-2.5C18 2 24 5.5 21 13.75 19 16.65 12 21 12 21z" stroke="var(--accent)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 21s-7-4.35-9-7.25C-1 5.5 6 2 9.5 5.5 11 7 12 8 12 8s1-1 2.5-2.5C18 2 24 5.5 21 13.75 19 16.65 12 21 12 21z"
+                stroke="var(--accent)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
           </div>
           <div>
             <h3 class="part-title">Heart</h3>
             <p class="muted mb-1">The pump that circulates blood — essential for life.</p>
-            <div class="card-body-short muted">Major causes of heart disease include high blood pressure, high cholesterol, smoking, poor diet and stress. Chest pain, sweating, nausea, or shortness of breath can indicate a heart attack — seek immediate care.</div>
+            <div class="card-body-short muted">Major causes of heart disease include high blood pressure, high
+              cholesterol, smoking, poor diet and stress. Chest pain, sweating, nausea, or shortness of breath can
+              indicate a heart attack — seek immediate care.</div>
           </div>
         </div>
       </article>
@@ -187,12 +292,16 @@
       <article class="part-card reveal" data-part="lungs" tabindex="0">
         <div class="d-flex align-items-start">
           <div class="icon-wrap" aria-hidden="true">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M7 8c0-3 1.5-4 5-4s5 1 5 4c0 2-1 3-1 5s-.5 4-4 5c-3.5-1-4-3-4-5 0-2-1-3-1-5z" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+              <path d="M7 8c0-3 1.5-4 5-4s5 1 5 4c0 2-1 3-1 5s-.5 4-4 5c-3.5-1-4-3-4-5 0-2-1-3-1-5z"
+                stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
           </div>
           <div>
             <h3 class="part-title">Lungs</h3>
             <p class="muted mb-1">Organs for oxygen intake and carbon dioxide removal.</p>
-            <div class="card-body-short muted">Pollution, smoking and infections can harm the lungs. Persistent cough or shortness of breath should be evaluated by a physician.</div>
+            <div class="card-body-short muted">Pollution, smoking and infections can harm the lungs. Persistent cough or
+              shortness of breath should be evaluated by a physician.</div>
           </div>
         </div>
       </article>
@@ -201,12 +310,16 @@
       <article class="part-card reveal" data-part="liver" tabindex="0">
         <div class="d-flex align-items-start">
           <div class="icon-wrap" aria-hidden="true">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M3 12c0-3 4-8 9-8s9 5 9 8-4 8-9 8-9-5-9-8z" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+              <path d="M3 12c0-3 4-8 9-8s9 5 9 8-4 8-9 8-9-5-9-8z" stroke="var(--accent)" stroke-width="1.2"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
           </div>
           <div>
             <h3 class="part-title">Liver</h3>
             <p class="muted mb-1">Processes nutrients, detoxifies the body and supports metabolism.</p>
-            <div class="card-body-short muted">Excess alcohol, medication misuse and viral infections can damage the liver. Symptoms may include loss of appetite, abdominal pain and jaundice.</div>
+            <div class="card-body-short muted">Excess alcohol, medication misuse and viral infections can damage the
+              liver. Symptoms may include loss of appetite, abdominal pain and jaundice.</div>
           </div>
         </div>
       </article>
@@ -215,12 +328,16 @@
       <article class="part-card reveal" data-part="kidneys" tabindex="0">
         <div class="d-flex align-items-start">
           <div class="icon-wrap" aria-hidden="true">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M5 12c0-4 2-8 7-8s7 4 7 8-3 8-7 8-7-4-7-8z" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+              <path d="M5 12c0-4 2-8 7-8s7 4 7 8-3 8-7 8-7-4-7-8z" stroke="var(--accent)" stroke-width="1.2"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
           </div>
           <div>
             <h3 class="part-title">Kidneys</h3>
             <p class="muted mb-1">Filter waste and excess fluid from the blood to make urine.</p>
-            <div class="card-body-short muted">Diabetes and high blood pressure can damage the kidneys. Back pain, swelling in the legs or changes in urination should prompt testing.</div>
+            <div class="card-body-short muted">Diabetes and high blood pressure can damage the kidneys. Back pain,
+              swelling in the legs or changes in urination should prompt testing.</div>
           </div>
         </div>
       </article>
@@ -229,12 +346,16 @@
       <article class="part-card reveal" data-part="stomach" tabindex="0">
         <div class="d-flex align-items-start">
           <div class="icon-wrap" aria-hidden="true">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M4 8c0-1 1-3 4-3s6-1 8 2 2 6 1 8-4 3-7 3S4 16 4 8z" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+              <path d="M4 8c0-1 1-3 4-3s6-1 8 2 2 6 1 8-4 3-7 3S4 16 4 8z" stroke="var(--accent)" stroke-width="1.2"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
           </div>
           <div>
             <h3 class="part-title">Stomach</h3>
             <p class="muted mb-1">Starts digestion and helps break down food.</p>
-            <div class="card-body-short muted">Spicy or contaminated food, infections and allergies can cause stomach problems. Seek care for severe pain, persistent vomiting or bloody stools.</div>
+            <div class="card-body-short muted">Spicy or contaminated food, infections and allergies can cause stomach
+              problems. Seek care for severe pain, persistent vomiting or bloody stools.</div>
           </div>
         </div>
       </article>
@@ -243,12 +364,16 @@
       <article class="part-card reveal" data-part="bones" tabindex="0">
         <div class="d-flex align-items-start">
           <div class="icon-wrap" aria-hidden="true">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M3 6l6 6-6 6" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+              <path d="M3 6l6 6-6 6" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
           </div>
           <div>
             <h3 class="part-title">Bones & Muscles</h3>
             <p class="muted mb-1">The body's framework and drivers of movement.</p>
-            <div class="card-body-short muted">Vitamin D and calcium are essential for bone health. Injuries can cause fractures — get X-rays and care promptly.</div>
+            <div class="card-body-short muted">Vitamin D and calcium are essential for bone health. Injuries can cause
+              fractures — get X-rays and care promptly.</div>
           </div>
         </div>
       </article>
@@ -257,12 +382,16 @@
       <article class="part-card reveal" data-part="skin" tabindex="0">
         <div class="d-flex align-items-start">
           <div class="icon-wrap" aria-hidden="true">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M12 2c3 0 6 2 6 6s-3 6-6 6-6-3-6-6 3-6 6-6z" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2c3 0 6 2 6 6s-3 6-6 6-6-3-6-6 3-6 6-6z" stroke="var(--accent)" stroke-width="1.2"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
           </div>
           <div>
             <h3 class="part-title">Skin</h3>
             <p class="muted mb-1">Protects the body, regulates temperature, and senses touch.</p>
-            <div class="card-body-short muted">Keep skin clean, use sunscreen and watch for signs of infection. See a dermatologist for persistent rashes or wounds.</div>
+            <div class="card-body-short muted">Keep skin clean, use sunscreen and watch for signs of infection. See a
+              dermatologist for persistent rashes or wounds.</div>
           </div>
         </div>
       </article>
@@ -271,12 +400,16 @@
       <article class="part-card reveal" data-part="eyes" tabindex="0">
         <div class="d-flex align-items-start">
           <div class="icon-wrap" aria-hidden="true">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+              <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" stroke="var(--accent)" stroke-width="1.2"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
           </div>
           <div>
             <h3 class="part-title">Eyes</h3>
             <p class="muted mb-1">Organs of vision.</p>
-            <div class="card-body-short muted">Redness, blurry vision or sudden loss of sight should be evaluated by an ophthalmologist. Regular check-ups help maintain eye health.</div>
+            <div class="card-body-short muted">Redness, blurry vision or sudden loss of sight should be evaluated by an
+              ophthalmologist. Regular check-ups help maintain eye health.</div>
           </div>
         </div>
       </article>
@@ -285,12 +418,16 @@
       <article class="part-card reveal" data-part="ears" tabindex="0">
         <div class="d-flex align-items-start">
           <div class="icon-wrap" aria-hidden="true">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M12 3c-1 2-1 4 0 6s1 3 0 5-1 4 0 6" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3c-1 2-1 4 0 6s1 3 0 5-1 4 0 6" stroke="var(--accent)" stroke-width="1.2"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
           </div>
           <div>
             <h3 class="part-title">Ears</h3>
             <p class="muted mb-1">Responsible for hearing and balance.</p>
-            <div class="card-body-short muted">Ear pain, discharge or hearing loss warrants ENT evaluation. Ear infections are common in children.</div>
+            <div class="card-body-short muted">Ear pain, discharge or hearing loss warrants ENT evaluation. Ear
+              infections are common in children.</div>
           </div>
         </div>
       </article>
@@ -299,12 +436,16 @@
       <article class="part-card reveal" data-part="reproductive" tabindex="0">
         <div class="d-flex align-items-start">
           <div class="icon-wrap" aria-hidden="true">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M12 2c3 3 5 5 5 9s-2 6-5 11c-3-5-5-7-5-11s2-6 5-9z" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2c3 3 5 5 5 9s-2 6-5 11c-3-5-5-7-5-11s2-6 5-9z" stroke="var(--accent)" stroke-width="1.2"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
           </div>
           <div>
             <h3 class="part-title">Reproductive System</h3>
             <p class="muted mb-1">Related to reproduction and hormonal health.</p>
-            <div class="card-body-short muted">Consult specialists for pregnancy, fertility or menstrual concerns. Practice safe sexual health and seek guidance when needed.</div>
+            <div class="card-body-short muted">Consult specialists for pregnancy, fertility or menstrual concerns.
+              Practice safe sexual health and seek guidance when needed.</div>
           </div>
         </div>
       </article>
@@ -323,10 +464,10 @@
   <script>
     // reveal on scroll
     const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver(entries=>{
-      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible') })
-    }, {threshold:.13});
-    reveals.forEach(r=>io.observe(r));
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') })
+    }, { threshold: .13 });
+    reveals.forEach(r => io.observe(r));
 
     // data for details (English concise)
     const PARTS = {
@@ -338,27 +479,27 @@
         title: 'Heart',
         detail: '<h4>Heart Health</h4><p>The heart circulates blood throughout the body. Chest pain, sweating, nausea or fainting may indicate a heart attack. Regular exercise, a healthy diet and quitting smoking reduce risk.</p><ul><li>ECG</li><li>Echocardiography</li></ul>'
       },
-      lungs: {title:'Lungs', detail:'<h4>Lungs</h4><p>Persistent cough or breathing difficulty should be evaluated. Avoid smoking and reduce exposure to pollution.</p>'},
-      liver: {title:'Liver', detail:'<h4>Liver</h4><p>Excess alcohol and certain drugs or infections can damage the liver. Symptoms include jaundice, abdominal pain and appetite loss.</p>'},
-      kidneys: {title:'Kidneys', detail:'<h4>Kidneys</h4><p>Regular blood and urine tests help monitor kidney function. Control diabetes and blood pressure to protect the kidneys.</p>'},
-      stomach: {title:'Stomach', detail:'<h4>Stomach</h4><p>Severe abdominal pain, persistent vomiting or bloody stools require prompt medical attention.</p>'},
-      bones: {title:'Bones & Muscles', detail:'<h4>Bones & Muscles</h4><p>Vitamin D and calcium are important. X-rays and orthopedic care may be needed for injuries.</p>'},
-      skin: {title:'Skin', detail:'<h4>Skin</h4><p>Use sunscreen, keep skin clean and see a dermatologist for persistent rashes or infections.</p>'},
-      eyes: {title:'Eyes', detail:'<h4>Eyes</h4><p>Blurry vision, sudden vision loss or eye pain should be assessed by an eye specialist. Regular eye checks are recommended.</p>'},
-      ears: {title:'Ears', detail:'<h4>Ears</h4><p>Ear pain, discharge or hearing loss needs ENT evaluation. Children commonly get ear infections.</p>'},
-      reproductive: {title:'Reproductive System', detail:'<h4>Reproductive Health</h4><p>For pregnancy, fertility or menstrual issues, consult a reproductive health specialist. Practice safe sexual health and seek professional advice.</p>'}
+      lungs: { title: 'Lungs', detail: '<h4>Lungs</h4><p>Persistent cough or breathing difficulty should be evaluated. Avoid smoking and reduce exposure to pollution.</p>' },
+      liver: { title: 'Liver', detail: '<h4>Liver</h4><p>Excess alcohol and certain drugs or infections can damage the liver. Symptoms include jaundice, abdominal pain and appetite loss.</p>' },
+      kidneys: { title: 'Kidneys', detail: '<h4>Kidneys</h4><p>Regular blood and urine tests help monitor kidney function. Control diabetes and blood pressure to protect the kidneys.</p>' },
+      stomach: { title: 'Stomach', detail: '<h4>Stomach</h4><p>Severe abdominal pain, persistent vomiting or bloody stools require prompt medical attention.</p>' },
+      bones: { title: 'Bones & Muscles', detail: '<h4>Bones & Muscles</h4><p>Vitamin D and calcium are important. X-rays and orthopedic care may be needed for injuries.</p>' },
+      skin: { title: 'Skin', detail: '<h4>Skin</h4><p>Use sunscreen, keep skin clean and see a dermatologist for persistent rashes or infections.</p>' },
+      eyes: { title: 'Eyes', detail: '<h4>Eyes</h4><p>Blurry vision, sudden vision loss or eye pain should be assessed by an eye specialist. Regular eye checks are recommended.</p>' },
+      ears: { title: 'Ears', detail: '<h4>Ears</h4><p>Ear pain, discharge or hearing loss needs ENT evaluation. Children commonly get ear infections.</p>' },
+      reproductive: { title: 'Reproductive System', detail: '<h4>Reproductive Health</h4><p>For pregnancy, fertility or menstrual issues, consult a reproductive health specialist. Practice safe sexual health and seek professional advice.</p>' }
     }
 
     // show detail when clicking a card
-    document.querySelectorAll('.part-card').forEach(card=>{
-      card.addEventListener('click', ()=> showDetail(card.dataset.part));
-      card.addEventListener('keypress', (e)=>{ if(e.key === 'Enter') showDetail(card.dataset.part) });
+    document.querySelectorAll('.part-card').forEach(card => {
+      card.addEventListener('click', () => showDetail(card.dataset.part));
+      card.addEventListener('keypress', (e) => { if (e.key === 'Enter') showDetail(card.dataset.part) });
     });
 
-    function showDetail(key){
+    function showDetail(key) {
       const panel = document.getElementById('detail');
       const data = PARTS[key];
-      if(!data) return;
+      if (!data) return;
       panel.innerHTML = `
         <div class=\"d-flex align-items-center\">
           <div style=\"flex:1\">
@@ -371,38 +512,41 @@
         <div class=\"mt-3\">${data.detail}</div>
       `;
       panel.classList.remove('d-none');
-      panel.scrollIntoView({behavior:'smooth', block:'center'});
+      panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-    function closeDetail(){ document.getElementById('detail').classList.add('d-none'); }
+    function closeDetail() { document.getElementById('detail').classList.add('d-none'); }
+
 
     // search filter
-    document.getElementById('search').addEventListener('input', function(e){
+    document.getElementById('search').addEventListener('input', function (e) {
       const q = e.target.value.trim().toLowerCase();
-      document.querySelectorAll('#parts article').forEach(a=>{
+      document.querySelectorAll('#parts article').forEach(a => {
         const txt = a.innerText.toLowerCase();
         a.style.display = txt.includes(q) ? '' : 'none';
       });
     });
 
   </script>
-  
-  <div class="progress rounded-0" role="progressbar" aria-label="Animated striped example" aria-valuenow="75"
-        aria-valuemin="0" aria-valuemax="100">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>
-    </div>
-    <footer class="d-flex gap-5 navagation">
-        <div class="container py-3">
-            <!-- Option A: row/cols ব্যবহার করে (responsive & semantic) -->
-            <div class="row align-items-center g-2">
-                <div class="text-center">
-                    <img src="./images/lifeline futer.png" alt="LifeLine Hospital logo" width="500" height="400"
-                        class="img-fluid  ">
-                </div>
-            </div>
-            <p class="text-center mt-3">© 2025 Emon Golder joy | All rights reserved</p>
-    </footer>
 
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+
+  <div class="progress rounded-0" role="progressbar" aria-label="Animated striped example" aria-valuenow="75"
+    aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>
+  </div>
+  <footer class="d-flex gap-5 navagation">
+    <div class="container py-3">
+      <!-- Option A: row/cols ব্যবহার করে (responsive & semantic) -->
+      <div class="row align-items-center g-2">
+        <div class="text-center">
+          <img src="./images/lifeline futer.png" alt="LifeLine Hospital logo" width="500" height="400"
+            class="img-fluid  ">
+        </div>
+      </div>
+      <p class="text-center mt-3">© 2025 Emon Golder joy | All rights reserved</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
